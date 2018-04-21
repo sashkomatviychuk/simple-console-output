@@ -1,0 +1,22 @@
+{
+  "name": "simple-console",
+  "version": "1.0.0",
+  "description": "Provides some object that looks like js console",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashkomatviychuk/simple-console-output.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashkomatviychuk/simple-console-output/issues"
+  },
+  "homepage": "https://github.com/sashkomatviychuk/simple-console-output#readme",
+  "dependencies": {
+    "sprintf-js": "^1.1.1"
+  }
+}

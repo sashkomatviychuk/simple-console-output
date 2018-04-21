@@ -1,4 +1,5 @@
 const fs = require('fs');
+const vsprintf = require("sprintf-js").vsprintf;
 
 // list of colors
 const colors = {
@@ -27,26 +28,11 @@ function getColoredText(str, color) {
  * @returns {undefined}
  */
 function displayText(args, color) {
-    const len = args.length;
     let str = '';
 
-    if (len) {
-        str = args[0];
+    if (args.length) {
+        str = vsprintf(args[0], args.splice(1));
     }
-
-    const otherArgs = [];
-
-    for (let i = 1; i < len; i++) {
-        if (str.indexOf('%s') === -1) {
-            otherArgs.push(args[i]);
-        } else {
-            str = str.replace('%s', String(args[i]));
-        }
-    }
-
-    otherArgs.unshift(str);
-
-    str = otherArgs.join(' ');
 
     fs.writeSync(process.stdout.fd, getColoredText(str, color));
 }
