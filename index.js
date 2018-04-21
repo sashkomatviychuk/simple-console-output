@@ -15,7 +15,7 @@ const colors = {
  */
 function getColoredText(str, color) {
 	const pattern = colors[color];
-	
+
 	if (!pattern) return str;
 
 	return pattern.replace('{text}', str);
@@ -29,7 +29,7 @@ function getColoredText(str, color) {
 function displayText(args, color) {
 	const len = args.length;
 	let str = '';
-	
+
 	if (len) {
 		str = args[0];
 	}
@@ -45,7 +45,7 @@ function displayText(args, color) {
 	}
 
 	otherArgs.unshift(str);
-	
+
 	str = otherArgs.join(' ');
 
 	fs.writeSync(process.stdout.fd, getColoredText(str, color));
