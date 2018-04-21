@@ -51,10 +51,31 @@ function displayText(args, color) {
     fs.writeSync(process.stdout.fd, getColoredText(str, color));
 }
 
+// times
+const times = {};
+
+/**
+ * @param {String} name
+ * @returns {undefined}
+ */
+function displayTime(name) {
+    if (!times[name]) {
+        return;
+    }
+
+    const diff = Date.now() - times[name];
+
+    delete times[name];
+
+    displayText(['Time: %s ms', diff], 'blue');
+}
+
 // exports console object
 module.exports = {
     log: function() { displayText(Array.from(arguments), 'blue'); },
     error: function() { displayText(Array.from(arguments), 'red'); },
     warn: function() { displayText(Array.from(arguments), 'yellow'); },
     info: function() { displayText(Array.from(arguments), 'cyan'); },
+    time: name => times[name] = Date.now(),
+    timeEnd: name => displayTime(name),
 };
